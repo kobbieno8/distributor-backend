@@ -2,6 +2,7 @@ const express = require('express')
 const {addEmail} = require('../Controller/emailController')
 
 const router = express.Router()
+router.post('/e',addEmail); 
 
 router.get('/',(req,res)=>{
     res.json(
@@ -9,6 +10,6 @@ router.get('/',(req,res)=>{
     )
     
 })
-router.post('/', addEmail); 
+
 
 module.exports = router

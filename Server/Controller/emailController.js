@@ -1,11 +1,17 @@
-const emailModel = require('../Models/Email')
+const emailSchema = require('../Models/Email')
+
 const addEmail = async (req,res)=>{
+
      try {
+    
     const { email } = req.body;
-    const aEmail = await emailModel.create({ email });
-    res.status(200).json(aEmail);
+    const aEmail = await emailSchema.create({ email });
+    console.log("here"+aEmail)
+    console.log("here1"+email)
+    res.status(200).json(aEmail);    
   } catch (error) {
-    res.status(400).json({ error: error.message });
+     console.log("sup")
+  
   }
 }
 module.exports = {addEmail}

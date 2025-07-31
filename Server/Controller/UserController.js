@@ -1,16 +1,28 @@
-const emailSchema = require('../Models/Email')
+const emailSchema = require("../Models/Email");
 
-const addUser = async (req,res)=>{
-
-     try {
-    
-    const {username,password} = req.body;
-    const myuser = await emailSchema.create({ username,password });
-
-    res.status(200).json(myProduct);    
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await emailSchema.findOne({ email: email });
+    if (password == user.password) {
+      res.status(200);
+    }
+    if (!user) {
+      return res.status(400).json({ error: "Invalid" });
+    }
   } catch (error) {
-     console.log("sup")
-  
+    console.log("denied");
   }
-}
-module.exports = {myuser}
+};
+
+const addUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const myuser = await emailSchema.create({ email, password });
+
+    res.status(200).json(myuser);
+  } catch (error) {
+    console.log(error);
+  }
+};
+module.exports = { login, addUser };

@@ -20,9 +20,9 @@ const addUser = async (req, res) => {
     const { email, password } = req.body;
     const myuser = await emailSchema.create({ email, password });
 
-    res.status(200).json(myProduct);
+    res.status(200).json(myuser);
   } catch (error) {
-    console.log("sup");
+    console.log(error);
   }
 };
-module.exports = { myuser };
+module.exports = { login, addUser };

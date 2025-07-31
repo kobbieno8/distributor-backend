@@ -28,6 +28,7 @@ const addProduct = async (req, res) => {
     res.status(200).json(myProduct);
   } catch (error) {
     console.log("sup");
+    console.log(error);
   }
 };
 module.exports = { addProduct, getproduct };

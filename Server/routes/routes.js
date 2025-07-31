@@ -2,8 +2,12 @@ const express = require("express");
 const { addEmail } = require("../Controller/emailController");
 const { mailer } = require("../Nodemailer_folder/Nodemailer");
 const router = express.Router();
-const { getproduct } = require("../Controller/ProductController");
-const { gettrade } = require("../Controller/TradeProductsController");
+const { getproduct, addProduct } = require("../Controller/ProductController");
+const {
+  gettrade,
+  addTradeProducts,
+} = require("../Controller/TradeProductsController");
+const { addUser } = require("../Controller/UserController");
 
 router.post("/e", addEmail);
 
@@ -25,6 +29,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/products", getproduct);
+router.post("/post", addTradeProducts);
+router.post("/poster", addProduct);
+router.post("/adduser", addUser);
 router.get("/trade", gettrade);
 
 module.exports = router;

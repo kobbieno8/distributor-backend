@@ -6,6 +6,7 @@ const gettrade = async (req, res) => {
     if (!trade) {
       return res.status(404).json({ message: "No products found" });
     }
+    console.log("it works");
     res.status(200).json({ trade: trade });
   } catch (error) {
     console.log(error);
@@ -14,7 +15,9 @@ const gettrade = async (req, res) => {
 };
 
 const addTradeProducts = async (req, res) => {
+  console.log("logged");
   try {
+    console.log("aiwhd");
     const { productname, descrption, qualities } = req.body;
     const myProduct = await tradeSchema.create({
       productname,
@@ -25,6 +28,7 @@ const addTradeProducts = async (req, res) => {
     res.status(200).json(myProduct);
   } catch (error) {
     console.log("sup");
+    console.log(error);
   }
 };
 module.exports = { addTradeProducts, gettrade };

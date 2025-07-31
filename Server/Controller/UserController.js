@@ -4,6 +4,9 @@ const login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await emailSchema.findOne({ email: email });
+    if (password == user.password) {
+      res.status(200);
+    }
     if (!user) {
       return res.status(400).json({ error: "Invalid" });
     }

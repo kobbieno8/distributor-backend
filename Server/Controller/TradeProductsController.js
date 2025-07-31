@@ -1,4 +1,3 @@
-const emailSchema = require("../Models/Email");
 const tradeSchema = require("../Models/TradeProduct");
 
 const gettrade = async (req, res) => {
@@ -9,6 +8,7 @@ const gettrade = async (req, res) => {
     }
     res.status(200).json({ trade: trade });
   } catch (error) {
+    console.log(error);
     console.log("waht product!");
   }
 };
@@ -16,7 +16,7 @@ const gettrade = async (req, res) => {
 const addTradeProducts = async (req, res) => {
   try {
     const { productname, descrption, qualities } = req.body;
-    const myProduct = await emailSchema.create({
+    const myProduct = await tradeSchema.create({
       productname,
       descrption,
       qualities,
@@ -27,4 +27,4 @@ const addTradeProducts = async (req, res) => {
     console.log("sup");
   }
 };
-module.exports = { addProduct };
+module.exports = { addTradeProducts, gettrade };

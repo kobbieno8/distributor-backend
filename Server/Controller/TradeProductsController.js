@@ -31,4 +31,37 @@ const addTradeProducts = async (req, res) => {
     console.log(error);
   }
 };
-module.exports = { addTradeProducts, gettrade };
+
+const deleteTrade = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const deleted = await tradeSchema.findByIdAndDelete(id);
+    if (!deleted) return res.status(404).json({ error: "Product not found" });
+
+    res.json({ message: "Deleted successfully" });
+  } catch (err) {
+    console.error("Delete error:", err);
+    res.status(500).json({ error: "Failed to delete product" });
+  }
+};
+
+const updateTrade = async (req, res) => {
+  const { id } = req.params;
+  const { name, qualities } = req.body;
+
+  try {
+    const updated = await tradeSchema.findByIdAndUpdate(
+      id,
+      { name, qualities },
+      { new: true, runValidators: true }
+    );
+    if (!updated) return res.status(404).json({ error: "Product not found" });
+
+    res.json({ message: "Updated successfully", product: updated });
+  } catch (err) {
+    console.error("Update error:", err);
+    res.status(500).json({ error: "Failed to update product" });
+  }
+};
+module.exports = { addTradeProducts, gettrade, deleteTrade, updateTrade };

@@ -35,13 +35,13 @@ const addProduct = async (req, res) => {
 const editProduct = async (req, res) => {
   const { id } = req.params;
   const updateData = req.body;
-  console.log(updateData);
   try {
     const result = await productSchema.findByIdAndUpdate(id, updateData, {
       new: true,
     });
     res.json(result);
   } catch (err) {
+    console.log(err);
     res.status(500).json({ error: "Update failed" });
   }
 };

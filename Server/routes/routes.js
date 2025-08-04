@@ -16,7 +16,7 @@ const {
   deleteTrade,
   updateTrade,
 } = require("../Controller/TradeProductsController");
-const { addUser } = require("../Controller/UserController");
+const { addUser, login } = require("../Controller/UserController");
 const TradeProduct = require("../Models/TradeProduct");
 
 router.post("/e", addEmail);
@@ -50,6 +50,7 @@ router.put("/trade/:id", updateTrade);
 //Get
 router.get("/products", getproduct);
 router.get("/trade", gettrade);
+router.post("/login", login);
 
 //Delete
 router.delete("/trade/:id", deleteTrade);

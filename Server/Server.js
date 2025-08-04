@@ -7,17 +7,18 @@ const mongoose = require('mongoose')
 const cors = require('cors');
 const app = express();
 app.use(express.json());
-
+app.use(cors());
 app.use('/local',routes)
 
-mongoose.connect(process.env.con)
-.then(()=>{
-    console.log("connected")
-})
-.catch((error)=>{
-console.log(error)
-}
-)
+const dbConnect = async () => {
+  try {
+    await mongoose.connect(process.env.con);
+    console.log("Connected to the database");
+  } catch (error) {
+    console.error("Database connection error:", error);
+  }
+};
+dbConnect()
 app.listen(port,()=>{
     console.log("redman")
 })

@@ -1,7 +1,9 @@
 const express = require("express");
 const { addEmail } = require("../Controller/emailController");
 const { mailer } = require("../Nodemailer_folder/Nodemailer");
+const {editProduct} = require("../Controller/editCoffeeprod")
 const router = express.Router();
+
 const { getproduct, addProduct } = require("../Controller/ProductController");
 const {
   gettrade,
@@ -27,7 +29,7 @@ router.get("/", (req, res) => {
     ],
   });
 });
-
+router.put("/products/:id",editProduct)
 router.get("/products", getproduct);
 router.post("/post", addTradeProducts);
 router.post("/poster", addProduct);

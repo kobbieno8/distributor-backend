@@ -1,14 +1,15 @@
-const express = require('express');
-const path = require('path');
-const routes = require('./routes/routes')
-const port = process.env.PORT 
-const mongoose = require('mongoose')
+const express = require("express");
+const path = require("path");
+const routes = require("./routes/routes");
+const port = process.env.PORT;
+const mongoose = require("mongoose");
 
-const cors = require('cors');
+const cors = require("cors");
 const app = express();
-app.use(express.json());
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(cors());
-app.use('/local',routes)
+app.use("/local", routes);
 
 const dbConnect = async () => {
   try {
@@ -18,7 +19,7 @@ const dbConnect = async () => {
     console.error("Database connection error:", error);
   }
 };
-dbConnect()
-app.listen(port,()=>{
-    console.log("redman")
-})
+dbConnect();
+app.listen(port, () => {
+  console.log("redman");
+});

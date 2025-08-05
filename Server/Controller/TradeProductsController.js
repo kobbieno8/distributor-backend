@@ -6,11 +6,9 @@ const gettrade = async (req, res) => {
     if (!trade) {
       return res.status(404).json({ message: "No products found" });
     }
-    console.log("it works");
     res.status(200).json({ trade: trade });
   } catch (error) {
     console.log(error);
-    console.log("waht product!");
   }
 };
 
@@ -18,11 +16,13 @@ const addTradeProducts = async (req, res) => {
   console.log("logged");
   try {
     console.log("aiwhd");
-    const { productname, descrption, qualities } = req.body;
+    const { productname, descrption, qualities, tagline, image } = req.body;
     const myProduct = await tradeSchema.create({
       productname,
       descrption,
       qualities,
+      tagline,
+      image,
     });
 
     res.status(200).json(myProduct);
@@ -48,12 +48,19 @@ const deleteTrade = async (req, res) => {
 
 const updateTrade = async (req, res) => {
   const { id } = req.params;
-  const { name, qualities } = req.body;
+  const { productname, descrption, qualities, tagline, image } = req.body;
+  console.log(req);
 
   try {
     const updated = await tradeSchema.findByIdAndUpdate(
       id,
-      { name, qualities },
+      {
+        productname,
+        descrption,
+        qualities,
+        tagline,
+        image,
+      },
       { new: true, runValidators: true }
     );
     if (!updated) return res.status(404).json({ error: "Product not found" });

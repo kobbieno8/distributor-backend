@@ -16,6 +16,14 @@ const tradeSchema = new Schema(
       type: [String],
       required: true,
     },
+    tagline: {
+      type: String,
+      required: true,
+    },
+    image: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );

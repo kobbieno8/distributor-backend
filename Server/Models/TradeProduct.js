@@ -13,7 +13,7 @@ const tradeSchema = new Schema(
       required: true,
     },
     qualities: {
-      type: String,
+      type: [String],
       required: true,
     },
   },

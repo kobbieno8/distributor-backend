@@ -1,15 +1,23 @@
 const express = require("express");
 const { addEmail } = require("../Controller/emailController");
 const { mailer } = require("../Nodemailer_folder/Nodemailer");
-const {editProduct} = require("../Controller/editCoffeeprod")
+// const { editProduct } = require("../Controller/editCoffeeprod");
 const router = express.Router();
 
-const { getproduct, addProduct } = require("../Controller/ProductController");
+const {
+  getproduct,
+  addProduct,
+  editProduct,
+  deleteProduct,
+} = require("../Controller/ProductController");
 const {
   gettrade,
   addTradeProducts,
+  deleteTrade,
+  updateTrade,
 } = require("../Controller/TradeProductsController");
-const { addUser } = require("../Controller/UserController");
+const { addUser, login } = require("../Controller/UserController");
+const TradeProduct = require("../Models/TradeProduct");
 
 router.post("/e", addEmail);
 
@@ -29,11 +37,23 @@ router.get("/", (req, res) => {
     ],
   });
 });
-router.put("/products/:id",editProduct)
-router.get("/products", getproduct);
+
+//Add
 router.post("/post", addTradeProducts);
 router.post("/poster", addProduct);
 router.post("/adduser", addUser);
+
+//Update
+router.put("/products/:id", editProduct);
+router.put("/trade/:id", updateTrade);
+
+//Get
+router.get("/products", getproduct);
 router.get("/trade", gettrade);
+router.post("/login", login);
+
+//Delete
+router.delete("/trade/:id", deleteTrade);
+router.delete("/products/:id", deleteProduct);
 
 module.exports = router;

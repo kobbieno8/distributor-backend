@@ -30,12 +30,7 @@ router.post("/send-email", async (req, res, next) => {
 });
 
 router.get("/", (req, res) => {
-  res.json({
-    lang: [
-      { t1: "roman", t2: "roman" },
-      { t1: "redman", t2: "redman" },
-    ],
-  });
+  res.send("backend is running")
 });
 
 //Add

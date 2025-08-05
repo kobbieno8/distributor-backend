@@ -8,15 +8,24 @@ const productSchema = new Schema(
       type: String,
       required: true,
     },
+    origin: {
+      type: String,
+      required: true,
+    },
+    processing: {
+      type: String,
+      required: true,
+    },
     descrption: {
       type: String,
       required: true,
     },
     altitude: {
-      type: Number,
+      type: String,
       required: true,
     },
-    flavor: {
+  
+    profile: {
       type: String,
       required: true,
     },

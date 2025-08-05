@@ -5,7 +5,7 @@ const login = async (req, res) => {
     const { username, password } = req.body;
 
     if (password == process.env.password && username == process.env.username) {
-      return res.status(200).json({ message: "Login successful" });
+      return res.status(200).json({ key: "correct" });
     } else {
       console.log(process.env.username);
       console.log(process.env.password);

@@ -14,17 +14,19 @@ const getproduct = async (req, res) => {
 
 const addProduct = async (req, res) => {
   try {
-    const { productname, descrption, altitude, flavor, grade, image } =
+    const { productname, descrption, altitude,  grade, image,profile, origin, processing} =
       req.body;
     const myProduct = await productSchema.create({
       productname,
       descrption,
       altitude,
-      flavor,
       grade,
       image,
+      profile,
+      origin,
+    processing
     });
-
+console.log(myProduct)
     res.status(200).json(myProduct);
   } catch (error) {
     console.log("sup");

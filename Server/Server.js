@@ -8,8 +8,19 @@ const cors = require("cors");
 const app = express();
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
-app.use(cors());
+
 app.use("/local", routes);
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://distributer-website.vercel.app",
+];
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  })
+);
 
 const dbConnect = async () => {
   try {

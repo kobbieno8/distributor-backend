@@ -11,13 +11,14 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 const corsOptions = {
   origin: ["http://localhost:5173", "https://distributer-website.vercel.app"],
-  methods: ["GET", "PUT", "POST"],
+  methods: ["GET", "POST", "PUT", "OPTIONS", "DELETE", "PATCH"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
   maxAge: 3600,
 };
 
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 app.use("/local", routes);
 

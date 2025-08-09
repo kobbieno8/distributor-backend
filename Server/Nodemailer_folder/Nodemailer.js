@@ -9,8 +9,8 @@ const transporter = nodemailer.createTransport({
   port: 465, // Gmail's secure SMTP port
   secure: true, // true for port 465, false for 587
   auth: {
-    user: "gulbetabel@gmail.com",
-    pass: "", // App Password (looks correct)
+    user: "kingdombusinessf5@gmail.com",
+    pass: "Shalom_123", // App Password (looks correct)
   },
 });
 
@@ -25,10 +25,10 @@ const mailer = async () => {
       
     console.log("Sending mail...");
     const info = await transporter.sendMail({
-      from: '"Gulbetabel" <gulbetabel@gmail.com>', // Friendly name + email
+      from: '"Kingdombusiness" <kingdombusinessf5@gmail.com>', // Friendly name + email
       to: myemails,
       subject: "Hello ✔",
-      text: "Never gonna dance to you", // Text body
+      text: "selam", // Text body
       html: "<b>Hello world?</b>",     // HTML body
     });
    

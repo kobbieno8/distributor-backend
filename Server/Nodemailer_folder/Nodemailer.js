@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const mailer = async () => {
+const mailer = async (req, res) => {
  
   try {
      const emails = await emailSchema.find()
@@ -22,14 +22,15 @@ const mailer = async () => {
       for(let  i =0; i < emails.length; i++){
          myemails = myemails + " " + emails[i].email;
       }
+ const  {title,desc} = req.data
       
     console.log("Sending mail...");
     const info = await transporter.sendMail({
       from: '"Kingdombusiness" <kingdombusinessf5@gmail.com>', // Friendly name + email
       to: myemails,
-      subject: "Hello ✔",
-      text: "selam", // Text body
-      html: "<b>Hello world?</b>",     // HTML body
+      subject: {title},
+      text: {desc}, // Text body
+      html: "",     // HTML body
     });
    
 

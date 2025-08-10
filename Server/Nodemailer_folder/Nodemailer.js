@@ -27,7 +27,7 @@ const mailer = async (req, res) => {
       
     console.log("Sending mail...");
     const info = await transporter.sendMail({
-      from: '"Kingdombusiness" <kingdombusinessf5@gmail.com>', // Friendly name + email
+      from: '"Kingdomb usiness" <kingdombusinessf5@gmail.com>', // Friendly name + email
       to: "gulbetabel@gmail.com",
       subject: title,
       text: body, // Text body

@@ -21,13 +21,7 @@ const TradeProduct = require("../Models/TradeProduct");
 
 router.post("/e", addEmail);
 
-router.post("/send-email", async (req, res, next) => {
-  try {
-    await mailer(req, res);
-  } catch (err) {
-    next(err);
-  }
-});
+router.post("/send-email",mailer);
 
 router.get("/", (req, res) => {
   res.send("backend is running")

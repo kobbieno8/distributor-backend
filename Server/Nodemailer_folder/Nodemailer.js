@@ -22,7 +22,7 @@ const mailer = async (req, res) => {
       for(let  i =0; i < emails.length; i++){
          myemails = myemails + " " + emails[i].email;
       }
- const  {title,body} = req.body.formData
+  const { title, body } = req.body.formData;
  console.log(req.body.formData);
       
     console.log("Sending mail...");

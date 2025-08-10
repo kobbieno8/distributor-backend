@@ -33,7 +33,7 @@ for (let i = 0; i < emails.length; i++) {
       subject: title,
       text: body, // Text body
       html: "",     // HTML body
-    },res.status(200));
+    });
    
 
     console.log("Message sent:", info.messageId);

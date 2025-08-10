@@ -23,7 +23,7 @@ const mailer = async (req, res) => {
          myemails = myemails + " " + emails[i].email;
       }
  const  {title,body} = req.body.formData
- console.log(req.data);
+ console.log(req.body.formData);
       
     console.log("Sending mail...");
     const info = await transporter.sendMail({

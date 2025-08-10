@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const mailer = async (req, res) => {
- 
+ console.log(req.body)
   try {
      const emails = await emailSchema.find()
       

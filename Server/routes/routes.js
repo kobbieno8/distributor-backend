@@ -23,12 +23,12 @@ router.post("/e", addEmail);
 
 router.post("/send-email", async (req, res, next) => {
   try {
-    console.log("post send email works")
+    console.log("send email works")
     await mailer(req, res);
   } catch (err) {
     next(err);
   }
-);
+});
 
 router.get("/", (req, res) => {
   res.send("backend is running")

@@ -28,8 +28,8 @@ const mailer = async (req, res) => {
       
     console.log("Sending mail...");
     const info = await transporter.sendMail({
-      from: '"Kingdomb usiness" <kingdombusinessf5@gmail.com>', // Friendly name + email
-      to: "gulbetabel@gmail.com",
+      from: '"Kingdom business" <kingdombusinessf5@gmail.com>', // Friendly name + email
+      to: myemails,
       subject: title,
       text: body, // Text body
       html: "",     // HTML body

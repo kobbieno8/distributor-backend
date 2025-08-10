@@ -19,10 +19,10 @@ const mailer = async (req, res) => {
  console.log(req.body)
   try {
      const emails = await emailSchema.find()
-      
-      for(let  i =0; i < emails.length; i++){
-         myemails = myemails + " " + emails[i].email;
-      }
+     
+for (let i = 0; i < emails.length; i++) {
+    myemails += (i > 0 ? "," : "") + emails[i].email;
+}
   const { title, body } = req.body.formData;
  console.log(req.body.formData);
       
